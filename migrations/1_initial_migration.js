@@ -1,5 +1,5 @@
-const Migrations = artifacts.require("Migrations");
+const SecretsExchange = artifacts.require("SecretsExchange");
 
 module.exports = function(deployer) {
-  deployer.deploy(Migrations);
+  deployer.deploy(SecretsExchange);
 };
