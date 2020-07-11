@@ -1,4 +1,4 @@
-# Secrets Exchange Contracts for Secrets.Mkt
+# Secrets Exchange Contracts for SecretsMkt
 
 To get started, git clone this url.
 
