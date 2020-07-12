@@ -7,14 +7,30 @@ contract SecretsExchange {
   address public owner;
 
 
-  mapping(string=>address) pendingSecrets;
-  mapping(string=>string) secretsDetails;
+  string [] public allSecretsByIPFSAddress;
+  string [] public allSecretsDescritpionsByIPFSAddress;
+  mapping(string=>address) secretsOwners;
+
   mapping(string=>address) validatedSecrets;
   mapping(string=>uint256) appraisals;
 
   //timestamp of joined for uint256
   mapping(address=>uint256) validators;
   mapping(address=>uint256) appraisers;
+
+  struct SecretDetails{
+    uint25 uploadTime;
+    string title;
+    string description;
+    address author;
+    uint256 ipfsDataAddress;
+    string status;
+    string minimumPrice;
+    string contentType;
+  }
+
+  mapping(string=>SecretDetails) secretsDetails;
+
 
   constructor() public {
     owner = msg.sender;
@@ -36,11 +52,22 @@ contract SecretsExchange {
   //Template functions
 
 
-  function createSecret(string memory ipfsAddress, string memory ipfsDetail) public returns(bool){
+  function createSecret(string memory submissionTitle, string submissionIPFSAddress, string submissionDescription, uint256 submissionMinimumPrice, string memory submissionContentType) public returns(bool){
 
-    pendingSecrets[ipfsAddress]= msg.sender;
-    secretsDetails[ipfsAddress] = ipfsDetail;
-
+    require (secretsOwners[submissionIPFSAddress] != address(0x0), "This IPFS address has already been registered");
+    secretsOwners[submissionIPFSAddress] = msg.sender;
+    allSecretsByIPFSAddress.push(submissionIPFSAddress);
+    secretsDetails[submissionIPFSAddress] = SecretDetails(
+        {
+            title: submissionTitle,
+            description: submissionDescription,
+            author:msg.sender,
+            ipfsDataAddress: submissionIPFSAddress,
+            status: "pending",
+            minimumPrice: submissionMinimumPrice,
+            contentType: submissionContentType
+        }
+    );
     return true;
   }
 
