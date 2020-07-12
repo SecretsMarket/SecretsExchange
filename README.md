@@ -1,5 +1,7 @@
 # Secrets Exchange Contracts for SecretsMkt
 
+![Secrets Exchange Logo](images/logo.png)
+
 To get started, git clone this url.
 
 `cd SecretsExchange`
