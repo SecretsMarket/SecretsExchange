@@ -1,6 +1,6 @@
 # Secrets Exchange Contracts for SecretsMkt
 
-### Supported by IPFS, Keep and 3Box Off-Chain solutions
+### Ethereum Smart Contracts supported by IPFS, Keep and 3Box Off-Chain solutions
 
 ![Secrets Exchange Logo](images/logo.png)
 
@@ -31,6 +31,8 @@ Once a secret is appraised and validated, it can be purchased for higher than th
 
 Secrets are split into 3 parts so that three validators can see portions but not all of the secret when validating its contents.
 
+Validators ensure secrets aren't resold based on public descriptions of the secrets.
+
 Keep callback contracts are included for Keep integration
 
 Ideally the owner of the contract is transferred to an Aragon DAO so onlyOwner modifier specifies a group rather than one address for decentralized governance if that is desired by deployer.
@@ -40,4 +42,5 @@ Ideally the owner of the contract is transferred to an Aragon DAO so onlyOwner m
 # TODO
 
 - auction system (maybe?)
+- Validator staking mechanism with slashing
 - tests
